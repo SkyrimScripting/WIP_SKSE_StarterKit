@@ -2,6 +2,15 @@
 
 # Skyrim Scripting SKSE Starter Kit
 
+- [Skyrim Scripting SKSE Starter Kit](#skyrim-scripting-skse-starter-kit)
+  - [Features](#features)
+  - [What does it do?](#what-does-it-do)
+  - [Requirements](#requirements)
+  - [Project setup](#project-setup)
+  - [Setup your own repository](#setup-your-own-repository)
+
+---
+
 A simple SKSE plugin for Skyrim using:
 
 - C++
@@ -12,6 +21,15 @@ A simple SKSE plugin for Skyrim using:
 - [Skyrim Scripting's Plugin helpers](https://github.com/SkyrimScripting/Plugin)
 
 > Because this uses CommonLibSSE NG, it supports Skyrim SSE, AE, GOG, and VR!
+
+
+## Features
+
+- [ ] Easy deployment to mods folder (or `Data/` folder)
+- [x] Easy SKSE event handlers!
+- [x] Easy game event handlers!
+- [ ] Easy Papyrus script bindings! (with easy script deployment!)
+- [ ] Easy Save/Load data handlers!
 
 ## What does it do?
 
@@ -51,6 +69,8 @@ You can configure this project to _automatically_ output the SKSE plugin `.dll` 
 - **Example:**
     - Name: `CMAKE_SKYRIM_MODS_FOLDER`  
       Value: `C:\path\to\wherever\your\Skyrim\mods\are`
+
+If you would prefer to deploy mods directly to your Skyrim `Data/` folder, you can set the `CMAKE_SKYRIM_FOLDER` to the path of your Skyrim folder. If the `CMAKE_SKYRIM_MODS_FOLDER` variable is no defined but `CMAKE_SKYRIM_FOLDER` contains a valid path to your Skyrim folder, your SKSE plugin will be output directly into your `Data/SKSE/Plugins/` folder. 
 
 ## Setup your own repository
 
