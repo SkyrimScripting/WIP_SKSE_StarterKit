@@ -5,6 +5,9 @@
 - [Skyrim Scripting SKSE Starter Kit](#skyrim-scripting-skse-starter-kit)
   - [Features](#features)
   - [What does it do?](#what-does-it-do)
+  - [Skyrim Scripting helper libraries](#skyrim-scripting-helper-libraries)
+    - [Skyrim Scripting Plugin helpers](#skyrim-scripting-plugin-helpers)
+    - [Skyrim Scripting CMake helpers](#skyrim-scripting-cmake-helpers)
   - [Requirements](#requirements)
   - [Project setup](#project-setup)
   - [Setup your own repository](#setup-your-own-repository)
@@ -16,8 +19,7 @@ A simple SKSE plugin for Skyrim using:
 - C++
 - CMake
 - [CommonLibSSE NG](https://github.com/CharmedBaryon/CommonLibSSE-NG)
-  - _automatically downloaded using vcpkg integration of CMake_
-- [Skyrim Scripting's CMake helpers](https://github.com/skyrimScripting/Cmake)
+- [Skyrim Scripting's CMake helpers](https://github.com/SkyrimScripting/CMake)
 - [Skyrim Scripting's Plugin helpers](https://github.com/SkyrimScripting/Plugin)
 
 > Because this uses CommonLibSSE NG, it supports Skyrim SSE, AE, GOG, and VR!
@@ -38,6 +40,58 @@ A simple SKSE plugin for Skyrim using:
 - Everytime any object in the game is activated, it logs details about the activation to the log file.
 
 Read [`plugin.cpp`](plugin.cpp) for details on what it's doing!
+
+## Skyrim Scripting helper libraries
+
+Whereas the [other templates](https://github.com/SkyrimScripting/SKSE_Templates) use the raw features provided by [CommonLibSSE-NG](https://github.com/CharmedBaryon/CommonLibSSE-NG), the **Starter Kit** uses Skyrim Scripting authored helpers to make your SKSE development easier!
+
+### [Skyrim Scripting Plugin helpers](https://github.com/skyrimScripting/Plugin)
+
+```cpp
+// Simply #include Plugin.h in your main .cpp file
+#include <SkyrimScripting/Plugin.h>
+
+// Then you can use a variety of macros for registering code to run at different points
+OnInit {
+    logger::info("Hello, plugin!");
+}
+
+// This event is when all of the Forms have been loaded, but it is
+// also *basically* the same time as the Main Menu (and console) become ready
+OnDataLoaded {
+    ConsoleLog("Hello, console!");
+}
+
+// If there are certain events that you want to listen to, it's easy as well:
+EventHandlers {
+    On<RE::TESActivateEvent>([](const RE::TESActivateEvent* event) {
+        auto activated = event->objectActivated->GetBaseObject()->GetName();
+        auto activator = event->actionRef->GetBaseObject()->GetName();
+        // This will print things to the game console like:
+        // Hod activated Mill
+        // Hilde activated Door
+        ConsoleLog("{} activated {}", activator, activated);
+    });
+}
+```
+
+See https://github.com/SkyrimScripting/Plugin for latest documentation.
+
+### [Skyrim Scripting CMake helpers](https://github.com/SkyrimScripting/CMake)
+
+```cmake
+# Load in your CMakeLists.txt
+find_package(SkyrimScripting.CMake CONFIG REQUIRED)
+
+# And simply define an "SKSE plugin"
+# This is the magic which automatically deploys your mod to CMAKE_SKYRIM_MODS_FOLDER
+add_skse_plugin(${PROJECT_NAME} SOURCES plugin.cpp)
+
+# If you are using SkyrimScripting.Plugin, you currently need to manually link that:
+target_link_libraries(${PROJECT_NAME} PRIVATE SkyrimScriptingPlugin::SkyrimScripting.Plugin)
+```
+
+See https://github.com/SkyrimScripting/CMake for latest documentation.
 
 ## Requirements
 
