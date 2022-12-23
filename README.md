@@ -25,7 +25,7 @@ A simple SKSE plugin for Skyrim using:
 
 ## Features
 
-- [ ] Easy deployment to mods folder (or `Data/` folder)
+- [x] Easy deployment to mods folder (or `Data/` folder)
 - [x] Easy SKSE event handlers!
 - [x] Easy game event handlers!
 - [ ] Easy Papyrus script bindings! (with easy script deployment!)
