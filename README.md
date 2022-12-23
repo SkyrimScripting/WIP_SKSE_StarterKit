@@ -1,6 +1,6 @@
 > 📜 other templates available at https://github.com/SkyrimScripting/SKSE_Templates
 
-# SKSE - System Events
+# Skyrim Scripting SKSE Starter Kit
 
 A simple SKSE plugin for Skyrim using:
 
@@ -8,20 +8,16 @@ A simple SKSE plugin for Skyrim using:
 - CMake
 - [CommonLibSSE NG](https://github.com/CharmedBaryon/CommonLibSSE-NG)
   - _automatically downloaded using vcpkg integration of CMake_
+- [Skyrim Scripting's CMake helpers](https://github.com/skyrimScripting/Cmake)
+- [Skyrim Scripting's Plugin helpers](https://github.com/SkyrimScripting/Plugin)
 
 > Because this uses CommonLibSSE NG, it supports Skyrim SSE, AE, GOG, and VR!
 
 ## What does it do?
 
-It writes to a log file whenever an SKSE "message" is sent telling the plugin about a system event.
-
-Events include things like:
-- all SKSE plugins have loaded
-- all .esp/.esm data has been loaded
-- player started a new game
-- player saved the game
-- player loaded a game
-- player deleted a game
+- It writes `"Hello log from SKSE Starter Kit!"` to a log file in `My Games/Skyrim Special Edition/SKSE/`
+- It writes `"Hello console from SKSE Starter Kit!"` to the ~ game console (_viewable from the Main Menu_)
+- Everytime any object in the game is activated, it logs details about the activation to the log file.
 
 Read [`plugin.cpp`](plugin.cpp) for details on what it's doing!
 
@@ -50,10 +46,10 @@ But you probably want to put the `.dll` into your Skyrim mods folder, e.g. the m
 
 You can configure this project to _automatically_ output the SKSE plugin `.dll` into:
 - `<your mods folder>\<name you give this project>\SKSE\Plugins\<your mod>.dll`  
-  if you set the `SKYRIM_MODS_FOLDER` environment variable to the **root of your mods folder** (i.e. `<your mods folder>`)
+  if you set the `CMAKE_SKYRIM_MODS_FOLDER` environment variable to the **root of your mods folder** (i.e. `<your mods folder>`)
 
 - **Example:**
-    - Name: `SKYRIM_MODS_FOLDER`  
+    - Name: `CMAKE_SKYRIM_MODS_FOLDER`  
       Value: `C:\path\to\wherever\your\Skyrim\mods\are`
 
 ## Setup your own repository
