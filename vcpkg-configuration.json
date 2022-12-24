@@ -16,7 +16,7 @@
     {
       "kind": "git",
       "repository": "https://github.com/SkyrimScripting/vcpkg.git",
-      "baseline": "b47098cc5591d056619a9b8630b56906a54c286e",
+      "baseline": "b4222a34c11f6ff3443b6fb14ac2e6cfacb6b763",
       "packages": [
         "skyrimscripting-cmake",
         "skyrimscripting-plugin"
