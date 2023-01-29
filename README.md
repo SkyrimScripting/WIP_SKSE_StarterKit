@@ -1,3 +1,8 @@
+⚠️ **WORK IN PROGRESS** ⚠️
+
+---
+---
+
 > 📜 other templates available at https://github.com/SkyrimScripting/SKSE_Templates
 
 # Skyrim Scripting SKSE Starter Kit
